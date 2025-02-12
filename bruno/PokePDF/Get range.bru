@@ -1,0 +1,21 @@
+meta {
+  name: Get range
+  type: http
+  seq: 10
+}
+
+get {
+  url: http://localhost:8080/api/v1/pokemon/pdf/range/download/74397164-16e9-4611-a60e-0810eefa6ba6
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "fromId": 1,
+      "toId": 10,
+      "sortBy": "id",
+      "filterBy": "type",
+      "pageSize": 20
+  }
+}

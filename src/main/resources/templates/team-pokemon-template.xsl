@@ -7,7 +7,7 @@
         <xsl:apply-templates select="*"/>
     </xsl:template>
 
-    <xsl:template match="*[translate(local-name(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')='teampokemondto']">
+    <xsl:template match="*">
         <fo:root>
             <fo:layout-master-set>
                 <fo:simple-page-master master-name="team"
@@ -189,11 +189,5 @@
                 <xsl:value-of select="$name"/>: <xsl:value-of select="$stat"/>
             </fo:block>
         </fo:table-cell>
-    </xsl:template>
-
-    <xsl:template match="*">
-        <xsl:message>
-            Warning: Unmatched element: <xsl:value-of select="name()"/>
-        </xsl:message>
     </xsl:template>
 </xsl:stylesheet>

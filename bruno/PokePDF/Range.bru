@@ -1,0 +1,21 @@
+meta {
+  name: Range
+  type: http
+  seq: 9
+}
+
+post {
+  url: http://localhost:8080/api/v1/pokemon/pdf/range
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "fromId": 1,
+      "toId": 10,
+      "sortBy": "id",
+      "filterBy": "type",
+      "pageSize": 20
+  }
+}
