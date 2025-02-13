@@ -1,1 +1,4 @@
-rootProject.name = "FLOPPY"
+rootProject.name = "floppy"
+
+
+include("pokemon", "core")
