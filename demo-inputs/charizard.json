@@ -1,0 +1,15 @@
+{
+  "name": "Charizard",
+  "level": 50,
+  "moves": ["Flamethrower", "Dragon Claw", "Air Slash", "Solar Beam"],
+  "stats": {
+    "hp": 78,
+    "attack": 84,
+    "defense": 78,
+    "special-attack": 109,
+    "special-defense": 85,
+    "speed": 100
+  },
+  "type": "Fire/Flying",
+  "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png"
+}

@@ -1,0 +1,17 @@
+{
+  "pokemon": [
+    {
+      "name": "Charizard",
+      "level": 50,
+      "type": "Fire/Flying"
+    },
+    {
+      "name": "Pikachu",
+      "level": 25,
+      "type": "Electric"
+    }
+  ],
+  "sortBy": "level",
+  "filterBy": "type=Fire",
+  "pageSize": 20
+}

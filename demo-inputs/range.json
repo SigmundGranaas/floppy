@@ -1,0 +1,7 @@
+{
+  "fromId": 1,
+  "toId": 10,
+  "sortBy": "id",
+  "filterBy": "type",
+  "pageSize": 20
+}
