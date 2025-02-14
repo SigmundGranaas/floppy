@@ -5,6 +5,10 @@ import com.sigmundgranaas.core.data.JobStatus;
 import com.sigmundgranaas.core.data.PdfRequestDTO;
 import com.sigmundgranaas.core.service.job.api.PdfGenerationService;
 import com.sigmundgranaas.core.service.xml.XMLConverter;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -26,10 +30,21 @@ public abstract class BasePdfController {
     }
 
     @GetMapping("/status/{jobId}")
-    public ResponseEntity<JobStatus> getJobStatus(@PathVariable String jobId) {
+    public ResponseEntity<JobStatus> getJobStatus(@Parameter(description = "ID of the PDF generation job", example = "550e8400-e29b-41d4-a716-446655440000") @PathVariable String jobId) {
         return ResponseEntity.ok(pdfService.getJobStatus(jobId));
     }
 
+    @Operation(
+            summary = "Download generated PDF",
+            description = "Download a previously generated Pokemon PDF document",
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "PDF downloaded successfully",
+                            content = @Content(mediaType = MediaType.APPLICATION_PDF_VALUE)
+                    )
+            }
+    )
     @GetMapping("/download/{jobId}")
     public ResponseEntity<Resource> downloadPdf(@PathVariable String jobId) {
         return ResponseEntity.ok()
