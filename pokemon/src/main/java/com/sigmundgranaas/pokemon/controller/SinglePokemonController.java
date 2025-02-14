@@ -26,5 +26,3 @@ public class SinglePokemonController extends BasePdfController {
         return queuePdfGeneration(pokemonData);
     }
 }
-
-

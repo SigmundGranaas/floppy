@@ -13,6 +13,6 @@ public record TeamPokemonDTO(
 ) implements PdfRequestDTO {
     @Override
     public String getTemplateName() {
-        return "team-pokemon-template.xsl";
+        return "team-pokemon-template";
     }
 }

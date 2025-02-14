@@ -12,7 +12,6 @@ import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Service
-@Profile("memory")
 @Slf4j
 public class InMemoryStorageService implements StorageService {
     private final Map<String, byte[]> storage = new ConcurrentHashMap<>();

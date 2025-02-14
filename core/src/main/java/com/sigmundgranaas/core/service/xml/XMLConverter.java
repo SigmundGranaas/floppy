@@ -25,9 +25,8 @@ public class XMLConverter {
         // Convert DTO to XML
         Instant xmlStartTime = Instant.now();
         String xmlData = convertToXml(dto);
-        log.info("Generated XML (took {} ms): {}",
-                Duration.between(xmlStartTime, Instant.now()).toMillis(),
-                xmlData);
+        log.info("Generated XML (took {} ms)",
+                Duration.between(xmlStartTime, Instant.now()).toMillis());
 
         return new StreamSource(new StringReader(xmlData));
     }
@@ -39,9 +38,8 @@ public class XMLConverter {
             mapper.setDefaultUseWrapper(false);
 
             String xml = mapper.writeValueAsString(data);
-            log.info("Converted DTO to XML (took {} ms): {}",
-                    Duration.between(startTime, Instant.now()).toMillis(),
-                    xml);
+            log.info("Converted DTO to XML (took {} ms)",
+                    Duration.between(startTime, Instant.now()).toMillis());
             return xml;
         } catch (Exception e) {
             log.error("Failed to convert data to XML after {} ms. Error: {}",
