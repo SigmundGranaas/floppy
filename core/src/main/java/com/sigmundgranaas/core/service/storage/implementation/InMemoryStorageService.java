@@ -2,7 +2,6 @@ package com.sigmundgranaas.core.service.storage.implementation;
 
 import com.sigmundgranaas.core.service.storage.api.StorageService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.annotation.Profile;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;

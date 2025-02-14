@@ -5,6 +5,7 @@ import com.sigmundgranaas.core.service.storage.api.StorageService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
@@ -16,9 +17,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Optional;
 
-@Primary
 @Service
 @Slf4j
+@Primary
 public class LocalStorageService implements StorageService {
     private final Path storageLocation;
 
