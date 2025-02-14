@@ -1,7 +1,8 @@
 package com.sigmundgranaas.pokemon.controller;
 
 import com.sigmundgranaas.core.data.JobResponse;
-import com.sigmundgranaas.core.service.PdfGenerationService;
+import com.sigmundgranaas.core.service.job.api.PdfGenerationService;
+import com.sigmundgranaas.core.service.xml.XMLConverter;
 import com.sigmundgranaas.pokemon.data.request.AllPokemonDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -15,8 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 @Validated
 public class AllPokemonController extends BasePdfController {
 
-    public AllPokemonController(PdfGenerationService pdfService) {
-        super(pdfService);
+    public AllPokemonController(PdfGenerationService pdfService, XMLConverter converter) {
+        super(pdfService, converter);
     }
 
     @PostMapping

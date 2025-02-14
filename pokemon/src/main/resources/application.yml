@@ -12,7 +12,7 @@ pdf:
   storage:
     location: ${PDF_STORAGE_LOCATION:pdf-storage}  # Default to 'pdf-storage' if not specified
   templates:
-    location: ${PDF_TEMPLATES_LOCATION:templates}   # Default to 'templates' if not specified
+    # Default to 'templates' if not specified
 
 # Logging configuration
 logging:

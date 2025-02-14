@@ -3,7 +3,8 @@ package com.sigmundgranaas.pokemon.controller;
 import com.sigmundgranaas.core.data.JobResponse;
 import com.sigmundgranaas.core.data.JobStatus;
 import com.sigmundgranaas.core.data.PdfRequestDTO;
-import com.sigmundgranaas.core.service.PdfGenerationService;
+import com.sigmundgranaas.core.service.job.api.PdfGenerationService;
+import com.sigmundgranaas.core.service.xml.XMLConverter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -17,9 +18,11 @@ import javax.xml.transform.Source;
 @Slf4j
 public abstract class BasePdfController {
     private final PdfGenerationService pdfService;
+    protected final XMLConverter xmlConverter;
 
-    protected BasePdfController(PdfGenerationService pdfService) {
+    protected BasePdfController(PdfGenerationService pdfService, XMLConverter xmlConverter) {
         this.pdfService = pdfService;
+        this.xmlConverter = xmlConverter;
     }
 
     @GetMapping("/status/{jobId}")
@@ -36,10 +39,10 @@ public abstract class BasePdfController {
     }
 
     protected ResponseEntity<JobResponse> queuePdfGeneration(PdfRequestDTO data) {
-        return ResponseEntity.ok(new JobResponse(pdfService.queuePdfGeneration(data)));
+        return ResponseEntity.ok(new JobResponse(pdfService.submitPdfGeneration(xmlConverter.convert(data), data.getTemplateName())));
     }
 
     protected ResponseEntity<JobResponse> queuePdfGeneration(Source request, String template) {
-        return ResponseEntity.ok(new JobResponse(pdfService.queuePdfGeneration(request, template)));
+        return ResponseEntity.ok(new JobResponse(pdfService.submitPdfGeneration(request, template)));
     }
 }

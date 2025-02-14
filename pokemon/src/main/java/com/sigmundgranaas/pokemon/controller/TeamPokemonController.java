@@ -1,8 +1,8 @@
 package com.sigmundgranaas.pokemon.controller;
 
-//import com.sigmundgranaas.floppy.error.InvalidTeamSizeException;
 import com.sigmundgranaas.core.data.JobResponse;
-import com.sigmundgranaas.core.service.PdfGenerationService;
+import com.sigmundgranaas.core.service.job.api.PdfGenerationService;
+import com.sigmundgranaas.core.service.xml.XMLConverter;
 import com.sigmundgranaas.pokemon.data.request.TeamPokemonDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 @Validated
 public class TeamPokemonController extends BasePdfController {
 
-    public TeamPokemonController(PdfGenerationService pdfService) {
-        super(pdfService);
+    public TeamPokemonController(PdfGenerationService pdfService, XMLConverter converter) {
+        super(pdfService, converter);
     }
 
     @PostMapping

@@ -1,8 +1,10 @@
-package com.sigmundgranaas.core.service.storage;
+package com.sigmundgranaas.core.service.storage.implementation;
 
 import com.sigmundgranaas.core.error.StorageException;
+import com.sigmundgranaas.core.service.storage.api.StorageService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
@@ -12,14 +14,12 @@ import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Map;
 import java.util.Optional;
-import java.util.concurrent.ConcurrentHashMap;
 
+@Primary
 @Service
 @Slf4j
 public class LocalStorageService implements StorageService {
-    private final Map<String, byte[]> storage = new ConcurrentHashMap<>();
     private final Path storageLocation;
 
     public LocalStorageService(@Value("${pdf.storage.location:temp}") String location) {
@@ -28,10 +28,9 @@ public class LocalStorageService implements StorageService {
     }
 
     @Override
-    public void storeDocument(String jobId, byte[] pdfContent) {
-        storage.put(jobId, pdfContent);
+    public void storeDocument(String jobId, byte[] content) {
         try {
-            Files.write(storageLocation.resolve(jobId + ".pdf"), pdfContent);
+            Files.write(storageLocation.resolve(jobId + ".pdf"), content);
         } catch (IOException e) {
             log.error(e.getMessage());
             throw new StorageException("Failed to store PDF", e);

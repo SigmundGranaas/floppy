@@ -1,7 +1,7 @@
 package com.sigmundgranaas.pokemon.controller;
 
 import com.sigmundgranaas.core.data.JobResponse;
-import com.sigmundgranaas.core.service.PdfGenerationService;
+import com.sigmundgranaas.core.service.job.api.PdfGenerationService;
 import com.sigmundgranaas.core.service.pdf.api.FopPdfGenerator;
 import com.sigmundgranaas.core.service.pdf.api.PdfGenerationRequest;
 import com.sigmundgranaas.core.service.pdf.api.PdfResult;
@@ -20,12 +20,10 @@ import java.time.format.DateTimeFormatter;
 @RequestMapping("/api/v1/general")
 @Validated
 public class DirectDataConverterController extends BasePdfController {
-    private final XMLConverter converter;
     private final FopPdfGenerator generator;
 
     public DirectDataConverterController(PdfGenerationService pdfService, XMLConverter converter, FopPdfGenerator generator) {
-        super(pdfService);
-        this.converter = converter;
+        super(pdfService, converter);
         this.generator = generator;
     }
 
@@ -33,7 +31,7 @@ public class DirectDataConverterController extends BasePdfController {
     public ResponseEntity<JobResponse> generatePdf(
             @Valid @RequestBody Object data, @PathVariable String template) {
 
-        return queuePdfGeneration(converter.convert(data), template);
+        return queuePdfGeneration(xmlConverter.convert(data), template);
     }
 
     @PostMapping("/pdf/{template}")
@@ -42,7 +40,7 @@ public class DirectDataConverterController extends BasePdfController {
             @PathVariable String template) {
 
         PdfResult result = generator.generate(new PdfGenerationRequest(
-                converter.convert(data),
+                xmlConverter.convert(data),
                 template
         ));
 

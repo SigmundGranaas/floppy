@@ -1,7 +1,8 @@
 package com.sigmundgranaas.pokemon.controller;
 
 import com.sigmundgranaas.core.data.JobResponse;
-import com.sigmundgranaas.core.service.PdfGenerationService;
+import com.sigmundgranaas.core.service.job.api.PdfGenerationService;
+import com.sigmundgranaas.core.service.xml.XMLConverter;
 import com.sigmundgranaas.pokemon.data.request.AllPokemonDTO;
 import com.sigmundgranaas.pokemon.data.request.PokemonRangeDTO;
 import com.sigmundgranaas.pokemon.service.PokeApiService;
@@ -20,8 +21,8 @@ public class PokemonRangeController extends BasePdfController {
 
     public PokemonRangeController(
             PdfGenerationService pdfService,
-            PokeApiService pokeApiService) {
-        super(pdfService);
+            XMLConverter converter, PokeApiService pokeApiService) {
+        super(pdfService, converter);
         this.pokeApiService = pokeApiService;
     }
 
