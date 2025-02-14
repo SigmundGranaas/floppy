@@ -55,10 +55,8 @@
 
                     <!-- Pokemon Grid -->
                     <xsl:for-each select="team">
-                        <!-- Force new page after every 2 Pokemon -->
-                        <xsl:if test="position() != 1 and position() mod 2 = 1">
-                            <fo:block break-before="page"/>
-                        </xsl:if>
+                        <!-- Force new page after every Pokemon -->
+                        <fo:block break-before="page"/>
 
                         <fo:block-container margin-bottom="1cm"
                                             padding="0.8cm"

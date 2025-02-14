@@ -7,6 +7,7 @@ import com.sigmundgranaas.core.error.JobNotFoundException;
 import com.sigmundgranaas.core.error.PdfNotFoundException;
 import com.sigmundgranaas.core.service.storage.StorageService;
 import com.sigmundgranaas.core.service.queue.JobQueue;
+import com.sigmundgranaas.core.service.xml.XMLConverter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
@@ -63,7 +64,7 @@ public class PdfGenerationService {
     }
 
     public Resource getPdfResource(String jobId) {
-        return storageService.getPdf(jobId)
+        return storageService.getDocument(jobId)
                 .orElseThrow(() -> new PdfNotFoundException("PDF not found for job: " + jobId));
     }
 }

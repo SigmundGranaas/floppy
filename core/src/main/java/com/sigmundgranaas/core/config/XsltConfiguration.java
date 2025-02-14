@@ -1,6 +1,6 @@
 package com.sigmundgranaas.core.config;
 
-import com.sigmundgranaas.core.service.xslt.XsltUriResolver;
+import com.sigmundgranaas.core.service.xslt.implementation.XsltUriResolver;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

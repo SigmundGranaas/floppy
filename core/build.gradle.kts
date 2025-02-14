@@ -18,12 +18,17 @@ repositories {
 }
 
 dependencies {
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
+    implementation("io.micrometer:micrometer-registry-prometheus")
+
     implementation("org.springframework.boot:spring-boot-starter")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
     // Apache FOP for PDF Generation
     implementation("org.apache.xmlgraphics:fop:2.10")
+    implementation("org.apache.pdfbox:pdfbox:3.0.1")
+
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-xml")
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310")
 

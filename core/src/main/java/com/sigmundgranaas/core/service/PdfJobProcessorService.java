@@ -1,7 +1,8 @@
 package com.sigmundgranaas.core.service;
 
 import com.sigmundgranaas.core.data.PdfJob;
-import com.sigmundgranaas.core.service.pdf.PdfGeneratorService;
+import com.sigmundgranaas.core.service.pdf.api.FopPdfGenerator;
+import com.sigmundgranaas.core.service.pdf.api.PdfGenerationRequest;
 import com.sigmundgranaas.core.service.storage.StorageService;
 import com.sigmundgranaas.core.service.queue.JobQueue;
 import lombok.extern.slf4j.Slf4j;
@@ -12,12 +13,12 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class PdfJobProcessorService {
     private final JobQueue jobQueue;
-    private final PdfGeneratorService pdfGenerator;
+    private final FopPdfGenerator pdfGenerator;
     private final StorageService storageService;
 
     public PdfJobProcessorService(
             JobQueue jobQueue,
-            PdfGeneratorService pdfGenerator,
+            FopPdfGenerator pdfGenerator,
             StorageService storageService) {
         this.jobQueue = jobQueue;
         this.pdfGenerator = pdfGenerator;
@@ -32,8 +33,8 @@ public class PdfJobProcessorService {
     private void processJob(PdfJob job) {
         log.info("Processing job: {}", job.jobId());
         try {
-            byte[] pdfContent = pdfGenerator.generatePdf(job);
-            storageService.storePdf(job.jobId(), pdfContent);
+            var pdfContent = pdfGenerator.generate(new PdfGenerationRequest(job.data(), job.templateName()));
+            storageService.storeDocument(job.jobId(), pdfContent.content());
             jobQueue.markComplete(job.jobId());
             log.info("Successfully completed job: {}", job.jobId());
         } catch (Exception e) {

@@ -1,4 +1,4 @@
-package com.sigmundgranaas.core.service;
+package com.sigmundgranaas.core.service.xml;
 
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
@@ -15,7 +15,6 @@ import java.time.Instant;
 @Service
 @Slf4j
 public class XMLConverter {
-
     private final XmlMapper mapper;
 
     public XMLConverter(XmlMapper mapper) {
@@ -36,7 +35,6 @@ public class XMLConverter {
     private String convertToXml(Object data) {
         Instant startTime = Instant.now();
         try {
-            // Configure the mapper for better output
             mapper.enable(SerializationFeature.INDENT_OUTPUT);
             mapper.setDefaultUseWrapper(false);
 

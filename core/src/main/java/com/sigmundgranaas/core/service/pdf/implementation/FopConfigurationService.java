@@ -1,4 +1,4 @@
-package com.sigmundgranaas.core.service;
+package com.sigmundgranaas.core.service.pdf.implementation;
 
 import com.sigmundgranaas.core.error.PdfGenerationException;
 import org.apache.fop.apps.FopFactory;

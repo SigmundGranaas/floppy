@@ -1,6 +1,7 @@
-package com.sigmundgranaas.core.service.xslt;
+package com.sigmundgranaas.core.service.xslt.implementation;
 
 import com.sigmundgranaas.core.error.TemplateLoadException;
+import com.sigmundgranaas.core.service.xslt.api.TemplateProvider;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
@@ -16,7 +17,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Service
-public class XsltTemplateService {
+public class XsltTemplateService implements TemplateProvider {
     private final TransformerFactory transformerFactory;
     private final ResourcePatternResolver resourceResolver;
     private final Map<String, Templates> templateCache = new ConcurrentHashMap<>();
@@ -30,7 +31,7 @@ public class XsltTemplateService {
         this.resourceResolver = resourceResolver;
     }
 
-    public Templates getTemplate(String templateName) throws TransformerConfigurationException {
+    public Templates getTemplate(String templateName) {
         return templateCache.computeIfAbsent(templateName, this::loadTemplate);
     }
 

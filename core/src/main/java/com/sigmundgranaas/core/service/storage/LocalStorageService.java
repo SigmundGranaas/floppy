@@ -28,7 +28,7 @@ public class LocalStorageService implements StorageService {
     }
 
     @Override
-    public void storePdf(String jobId, byte[] pdfContent) {
+    public void storeDocument(String jobId, byte[] pdfContent) {
         storage.put(jobId, pdfContent);
         try {
             Files.write(storageLocation.resolve(jobId + ".pdf"), pdfContent);
@@ -39,7 +39,7 @@ public class LocalStorageService implements StorageService {
     }
 
     @Override
-    public Optional<Resource> getPdf(String jobId) {
+    public Optional<Resource> getDocument(String jobId) {
         Path file = storageLocation.resolve(jobId + ".pdf");
         if (Files.exists(file)) {
             try {

@@ -1,4 +1,4 @@
-package com.sigmundgranaas.core.service.xslt;
+package com.sigmundgranaas.core.service.xslt.implementation;
 
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.ResourcePatternResolver;
