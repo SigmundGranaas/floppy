@@ -31,6 +31,9 @@ Build docker image
 Run docker image
 `docker run -p 8080:8080 --mount type=bind,source=./pdf-storage,target=/workspace/pdf-storage  -t docker.io/library/pokemon:0.0.1-SNAPSHOT`
 
+Run with docker compose
+`docker compose up`
+
 ### Usage
 Use the swagger api for a demonstration: [Swagger](http://localhost:8080/swagger-ui/index.html#/)
 
