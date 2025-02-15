@@ -1,5 +1,6 @@
 plugins {
     java
+    id("org.graalvm.buildtools.native") version "0.10.5"
     id("org.springframework.boot") version "3.4.2"
     id("io.spring.dependency-management") version "1.1.7"
 }
@@ -37,6 +38,7 @@ dependencies {
 
     compileOnly("org.projectlombok:lombok:1.18.30")
     annotationProcessor("org.projectlombok:lombok:1.18.30")
+    "developmentOnly"("org.springframework.boot:spring-boot-devtools")
 
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }

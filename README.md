@@ -10,14 +10,13 @@ There are two modules in this project: Pokemon and core.
 ### Core library
 The core library contains the pdf generation, queuing, style loading and storage service. These components are meant to be used by other services to load and convert any sort of input data into XML and then convert it to PDF using a .XSLT template.
 
-### Pokemon library
-The Pokemon library is a standalone consumer library which uses to Core lib to generate different Pokemon related PDF's via typed controller endpoints.
+### Pokemon module
+The Pokemon library is a standalone frontend library which uses to Core lib to generate different Pokemon related PDF's via typed controller endpoints.
 This module uses Spring web MVC to create controllers which can be used to.
 
 #### Templates
-Currently there are three different formats created for converting data into Pokemon pdf's. These are stored in the pokemon resource folder.
+Currently, there are three different formats created for converting data into Pokemon pdf's. These are stored in the pokemon resource folder.
 They demonstrate different approaches for how to create the .xsl template files and how they can be organized.
-
 
 ### Running the project
 
@@ -28,6 +27,7 @@ Run the pokemon project directly in the console
 #### Docker
 Build docker image
 `./gradlew :pokemon:bootBuildImage`
+
 Run docker image
 `docker run -p 8080:8080 --mount type=bind,source=./pdf-storage,target=/workspace/pdf-storage  -t docker.io/library/pokemon:0.0.1-SNAPSHOT`
 
@@ -39,6 +39,6 @@ Check the [Pdf storage](./pdf-storage) for example pdf's that have been created
 
 Generated pdf's will be put into the pdf-storage folder
 
-
-### architecture
+### Queue based architecture
+This is not 100% accurate, but show the queue-based job system in action.
 ![mermaid.png](mermaid.png)

@@ -14,7 +14,6 @@ import java.time.Clock;
 import java.time.Duration;
 import java.time.Instant;
 
-@Primary
 @Slf4j
 @Component
 public class LoggingPdfGenerator implements FopPdfGenerator {
