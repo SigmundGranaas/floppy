@@ -5,7 +5,7 @@
         :disabled="isGenerating"
         class="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 disabled:bg-gray-300 text-white disabled:text-gray-500 text-sm font-medium px-6 py-2 rounded-full transition-colors shadow-sm disabled:shadow-none disabled:cursor-not-allowed"
     >
-      <NuxtIcon name="mdi:file-pdf-box" class="w-5 h-5" />
+      <Icon name="mdi:baseline-feed" class="w-5 h-5" />
       {{ isGenerating ? 'Generating...' : 'Generate PDF' }}
     </button>
   </footer>

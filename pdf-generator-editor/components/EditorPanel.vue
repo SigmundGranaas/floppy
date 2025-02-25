@@ -22,7 +22,7 @@
             </option>
           </select>
           <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-            <NuxtIcon name="mdi:chevron-down" class="w-5 h-5 text-gray-500" />
+            <Icon name="mdi:chevron-down" class="w-5 h-5 text-gray-500" />
           </div>
         </div>
       </div>
@@ -30,20 +30,20 @@
       <div class="flex gap-2">
         <button
             @click="handleSaveTemplate"
-            class="p-2 rounded-full hover:bg-gray-200 transition-colors"
-            title="Save template"
+            class="p-2 rounded-full flex gap-x-2 items-center hover:bg-gray-200 transition-colors"
         >
-          <NuxtIcon
+          <Icon
               :name="selectedTemplateLocal ? 'mdi:content-save' : 'mdi:content-save-plus'"
               class="w-5 h-5 text-gray-600"
           />
+          Save template
         </button>
         <button
             @click="$emit('create-template')"
-            class="p-2 rounded-full hover:bg-gray-200 transition-colors"
+            class="p-2 flex  items-center gap-x-2  rounded-full hover:bg-gray-200 transition-colors"
             title="Create new template"
         >
-          <NuxtIcon name="mdi:plus-circle" class="w-5 h-5 text-gray-600" />
+          <Icon name="mdi:plus-circle" class="w-5 h-5 text-gray-600" />
         </button>
       </div>
     </div>
@@ -57,7 +57,7 @@
           ? 'text-blue-600 border-blue-600'
           : 'text-gray-600 border-transparent hover:bg-gray-100'"
       >
-        <NuxtIcon name="mdi:code-json" class="w-5 h-5" />
+        <Icon name="mdi:code-json" class="w-5 h-5" />
         JSON Editor
       </button>
       <button
@@ -67,19 +67,9 @@
           ? 'text-blue-600 border-blue-600'
           : 'text-gray-600 border-transparent hover:bg-gray-100'"
       >
-        <NuxtIcon name="mdi:xml" class="w-5 h-5" />
+        <Icon name="mdi:xml" class="w-5 h-5" />
         XSL Editor
       </button>
-
-      <!-- XSLT Templates Dropdown (visible only in XSL editor tab) -->
-      <div v-if="activeEditorLocal === 'xsl'" class="ml-auto mr-2 flex items-center">
-        <XsltTemplateDropdown
-            :templates="templates"
-            :selectedTemplate="selectedTemplate"
-            @select="$emit('apply-xslt', $event)"
-            @save-current="saveCurrentXslt"
-        />
-      </div>
     </div>
 
     <!-- Editor content -->
@@ -100,7 +90,6 @@
 
 <script setup>
 import { computed } from 'vue'
-import XsltTemplateDropdown from '~/components/XsltTemplateDropdown.vue'
 
 const props = defineProps({
   templates: {
