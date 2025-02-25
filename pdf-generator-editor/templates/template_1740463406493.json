@@ -1,0 +1,123 @@
+{
+  "name": "styled",
+  "jsonData": {
+    "cv": {
+      "personalInfo": {
+        "name": "John Smith",
+        "title": "Senior Software Engineer",
+        "contact": {
+          "email": "john.smith@example.com",
+          "phone": "+1 (555) 123-4567",
+          "location": "San Francisco, CA"
+        }
+      },
+      "profile": "Experienced software engineer with over 10 years of expertise in building scalable web applications and leading development teams. Passionate about clean code, efficient algorithms, and mentoring junior developers.",
+      "experience": [
+        {
+          "position": "Senior Software Engineer",
+          "company": "Tech Solutions Inc.",
+          "period": "2018 - Present",
+          "description": "Lead a team of 5 developers working on cloud-based enterprise applications. Improved system performance by 40% through architecture redesign.",
+          "achievements": [
+            "Redesigned authentication system reducing login times by 60%",
+            "Implemented CI/CD pipeline reducing deployment time from days to hours",
+            "Led migration from monolith to microservices architecture"
+          ]
+        },
+        {
+          "position": "Software Engineer",
+          "company": "Web Dynamics Ltd.",
+          "period": "2014 - 2018",
+          "description": "Developed and maintained customer-facing web applications using JavaScript, React, and Node.js.",
+          "achievements": [
+            "Built responsive UI components used across 15+ projects",
+            "Reduced API response time by 35% through caching optimization",
+            "Mentored 3 junior developers who were later promoted"
+          ]
+        },
+        {
+          "position": "Junior Developer",
+          "company": "StartUp Innovations",
+          "period": "2012 - 2014",
+          "description": "Worked on front-end development for early-stage startup.",
+          "achievements": [
+            "Implemented key features for company's flagship product",
+            "Assisted in database design and optimization"
+          ]
+        }
+      ],
+      "education": [
+        {
+          "degree": "Master of Science in Computer Science",
+          "institution": "Stanford University",
+          "year": "2012"
+        },
+        {
+          "degree": "Bachelor of Science in Computer Engineering",
+          "institution": "University of California, Berkeley",
+          "year": "2010"
+        }
+      ],
+      "skills": [
+        {
+          "category": "Programming Languages",
+          "items": [
+            "JavaScript",
+            "TypeScript",
+            "Python",
+            "Java",
+            "C++"
+          ]
+        },
+        {
+          "category": "Frameworks & Libraries",
+          "items": [
+            "React",
+            "Node.js",
+            "Express",
+            "Django",
+            "Spring Boot"
+          ]
+        },
+        {
+          "category": "Tools & Platforms",
+          "items": [
+            "Git",
+            "Docker",
+            "Kubernetes",
+            "AWS",
+            "CI/CD",
+            "Agile Methodologies"
+          ]
+        }
+      ],
+      "languages": [
+        {
+          "name": "English",
+          "proficiency": "Native"
+        },
+        {
+          "name": "Spanish",
+          "proficiency": "Fluent"
+        },
+        {
+          "name": "French",
+          "proficiency": "Intermediate"
+        }
+      ],
+      "certifications": [
+        {
+          "name": "AWS Certified Solutions Architect",
+          "issuer": "Amazon Web Services",
+          "year": "2020"
+        },
+        {
+          "name": "Certified Scrum Master",
+          "issuer": "Scrum Alliance",
+          "year": "2019"
+        }
+      ]
+    }
+  },
+  "xslTemplate": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<xsl:stylesheet version=\"1.0\"\n                xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\"\n                xmlns:fo=\"http://www.w3.org/1999/XSL/Format\">\n\n    <!-- Main template -->\n    <xsl:template match=\"/\">\n        <fo:root>\n            <!-- Define the page layout -->\n            <fo:layout-master-set>\n                <fo:simple-page-master master-name=\"A4\"\n                                       page-width=\"210mm\"\n                                       page-height=\"297mm\"\n                                       margin-top=\"2cm\"\n                                       margin-bottom=\"2cm\"\n                                       margin-left=\"3cm\"\n                                       margin-right=\"3cm\">\n                    <fo:region-body margin-top=\"0cm\"/>\n                </fo:simple-page-master>\n            </fo:layout-master-set>\n\n            <!-- Page content -->\n            <fo:page-sequence master-reference=\"A4\">\n                <fo:flow flow-name=\"xsl-region-body\">\n\n                    <!-- Single column layout -->\n                    <fo:block font-family=\"Helvetica, Arial, sans-serif\" line-height=\"1.5\">\n\n                        <!-- Name - large, bold, all caps -->\n                        <fo:block font-size=\"36pt\"\n                                  font-weight=\"bold\"\n                                  font-family=\"Helvetica, Arial, sans-serif\"\n                                  color=\"#000000\"\n                                  letter-spacing=\"3pt\"\n                                  text-transform=\"uppercase\"\n                                  space-after=\"0.2cm\"\n                                  padding-bottom=\"0.2cm\">\n                            <xsl:value-of select=\"//personalInfo/name\"/>\n                        </fo:block>\n\n                        <!-- Title - elegant, understated -->\n                        <fo:block font-size=\"14pt\"\n                                  letter-spacing=\"1pt\"\n                                  color=\"#333333\"\n                                  font-weight=\"normal\"\n                                  text-transform=\"uppercase\"\n                                  space-after=\"0.5cm\">\n                            <xsl:value-of select=\"//personalInfo/title\"/>\n                        </fo:block>\n\n                        <!-- Contact information in a single line -->\n                        <fo:block font-size=\"9pt\"\n                                  letter-spacing=\"0.5pt\"\n                                  space-after=\"1.5cm\"\n                                  color=\"#666666\">\n                            <xsl:value-of select=\"//personalInfo/contact/email\"/> •\n                            <xsl:value-of select=\"//personalInfo/contact/phone\"/> •\n                            <xsl:value-of select=\"//personalInfo/contact/location\"/>\n                        </fo:block>\n\n                        <!-- Profile section -->\n                        <fo:block space-after=\"1.5cm\">\n                            <fo:block font-size=\"12pt\"\n                                      font-weight=\"bold\"\n                                      text-transform=\"uppercase\"\n                                      letter-spacing=\"1.5pt\"\n                                      color=\"#000000\"\n                                      space-after=\"0.5cm\"\n                                      border-bottom=\"0.5pt solid #cccccc\"\n                                      padding-bottom=\"0.2cm\">\n                                Profile\n                            </fo:block>\n\n                            <fo:block font-size=\"10pt\"\n                                      text-align=\"justify\"\n                                      space-after=\"0.4cm\"\n                                      line-height=\"1.6\">\n                                <xsl:value-of select=\"//profile\"/>\n                            </fo:block>\n                        </fo:block>\n\n                        <!-- Experience section -->\n                        <fo:block space-after=\"1.5cm\">\n                            <fo:block font-size=\"12pt\"\n                                      font-weight=\"bold\"\n                                      text-transform=\"uppercase\"\n                                      letter-spacing=\"1.5pt\"\n                                      color=\"#000000\"\n                                      space-after=\"0.5cm\"\n                                      border-bottom=\"0.5pt solid #cccccc\"\n                                      padding-bottom=\"0.2cm\">\n                                Experience\n                            </fo:block>\n\n                            <xsl:for-each select=\"//experience\">\n                                <fo:block margin-top=\"0.7cm\" margin-bottom=\"0.9cm\">\n                                    <!-- Position and Company on the same line with spacing between -->\n                                    <fo:block font-size=\"11pt\"\n                                              font-weight=\"bold\"\n                                              space-after=\"0.1cm\">\n                                        <xsl:value-of select=\"position\"/>\n                                        <fo:inline font-weight=\"normal\" color=\"#666666\"> • <xsl:value-of select=\"company\"/></fo:inline>\n                                    </fo:block>\n\n                                    <fo:block font-size=\"9pt\"\n                                              font-style=\"italic\"\n                                              color=\"#666666\"\n                                              space-after=\"0.3cm\">\n                                        <xsl:value-of select=\"period\"/>\n                                    </fo:block>\n\n                                    <fo:block font-size=\"10pt\"\n                                              text-align=\"justify\"\n                                              space-after=\"0.3cm\"\n                                              line-height=\"1.5\">\n                                        <xsl:value-of select=\"description\"/>\n                                    </fo:block>\n\n                                    <fo:list-block provisional-distance-between-starts=\"5mm\">\n                                        <xsl:for-each select=\"achievements/node()\">\n                                            <fo:list-item space-after=\"0.2cm\">\n                                                <fo:list-item-label end-indent=\"label-end()\">\n                                                    <fo:block>•</fo:block>\n                                                </fo:list-item-label>\n                                                <fo:list-item-body start-indent=\"body-start()\">\n                                                    <fo:block font-size=\"9.5pt\" line-height=\"1.4\"><xsl:value-of select=\".\"/></fo:block>\n                                                </fo:list-item-body>\n                                            </fo:list-item>\n                                        </xsl:for-each>\n                                    </fo:list-block>\n                                </fo:block>\n                            </xsl:for-each>\n                        </fo:block>\n\n                        <!-- Education section -->\n                        <fo:block space-after=\"1.5cm\">\n                            <fo:block font-size=\"12pt\"\n                                      font-weight=\"bold\"\n                                      text-transform=\"uppercase\"\n                                      letter-spacing=\"1.5pt\"\n                                      color=\"#000000\"\n                                      space-after=\"0.5cm\"\n                                      border-bottom=\"0.5pt solid #cccccc\"\n                                      padding-bottom=\"0.2cm\">\n                                Education\n                            </fo:block>\n\n                            <xsl:for-each select=\"//education\">\n                                <fo:block margin-top=\"0.4cm\" margin-bottom=\"0.4cm\">\n                                    <fo:block font-size=\"11pt\"\n                                              font-weight=\"bold\"\n                                              space-after=\"0.1cm\">\n                                        <xsl:value-of select=\"degree\"/>\n                                    </fo:block>\n\n                                    <fo:block font-size=\"10pt\"\n                                              space-after=\"0.1cm\">\n                                        <xsl:value-of select=\"institution\"/>\n                                        <fo:inline font-style=\"italic\" color=\"#666666\"> • <xsl:value-of select=\"year\"/></fo:inline>\n                                    </fo:block>\n                                </fo:block>\n                            </xsl:for-each>\n                        </fo:block>\n\n                        <!-- Skills section in a clean format -->\n                        <fo:block space-after=\"1.5cm\">\n                            <fo:block font-size=\"12pt\"\n                                      font-weight=\"bold\"\n                                      text-transform=\"uppercase\"\n                                      letter-spacing=\"1.5pt\"\n                                      color=\"#000000\"\n                                      space-after=\"0.5cm\"\n                                      border-bottom=\"0.5pt solid #cccccc\"\n                                      padding-bottom=\"0.2cm\">\n                                Skills\n                            </fo:block>\n\n                            <xsl:for-each select=\"//skills\">\n                                <fo:block margin-top=\"0.4cm\" margin-bottom=\"0.5cm\">\n                                    <fo:block font-size=\"10pt\"\n                                              font-weight=\"bold\"\n                                              space-after=\"0.2cm\">\n                                        <xsl:value-of select=\"category\"/>\n                                    </fo:block>\n\n                                    <fo:block font-size=\"10pt\"\n                                              space-after=\"0.3cm\">\n                                        <xsl:for-each select=\"items/node()\">\n                                            <xsl:value-of select=\".\"/>\n                                            <xsl:if test=\"position() != last()\"> • </xsl:if>\n                                        </xsl:for-each>\n                                    </fo:block>\n                                </fo:block>\n                            </xsl:for-each>\n                        </fo:block>\n\n                        <!-- Languages and Certifications in a single row -->\n                        <fo:table width=\"100%\" table-layout=\"fixed\">\n                            <fo:table-column column-width=\"proportional-column-width(1)\"/>\n                            <fo:table-column column-width=\"proportional-column-width(1)\"/>\n                            <fo:table-body>\n                                <fo:table-row>\n                                    <!-- Languages -->\n                                    <fo:table-cell>\n                                        <fo:block space-after=\"0.8cm\">\n                                            <fo:block font-size=\"12pt\"\n                                                      font-weight=\"bold\"\n                                                      text-transform=\"uppercase\"\n                                                      letter-spacing=\"1.5pt\"\n                                                      color=\"#000000\"\n                                                      space-after=\"0.5cm\"\n                                                      border-bottom=\"0.5pt solid #cccccc\"\n                                                      padding-bottom=\"0.2cm\">\n                                                Languages\n                                            </fo:block>\n\n                                            <xsl:for-each select=\"//languages\">\n                                                <fo:block font-size=\"10pt\" space-after=\"0.2cm\" margin-top=\"0.4cm\">\n                                                    <fo:inline font-weight=\"bold\"><xsl:value-of select=\"name\"/></fo:inline> • <xsl:value-of select=\"proficiency\"/>\n                                                </fo:block>\n                                            </xsl:for-each>\n                                        </fo:block>\n                                    </fo:table-cell>\n\n                                    <!-- Certifications -->\n                                    <fo:table-cell padding-left=\"1cm\">\n                                        <fo:block space-after=\"0.8cm\">\n                                            <fo:block font-size=\"12pt\"\n                                                      font-weight=\"bold\"\n                                                      text-transform=\"uppercase\"\n                                                      letter-spacing=\"1.5pt\"\n                                                      color=\"#000000\"\n                                                      space-after=\"0.5cm\"\n                                                      border-bottom=\"0.5pt solid #cccccc\"\n                                                      padding-bottom=\"0.2cm\">\n                                                Certifications\n                                            </fo:block>\n\n                                            <xsl:for-each select=\"//certifications\">\n                                                <fo:block font-size=\"10pt\" space-after=\"0.3cm\" margin-top=\"0.4cm\">\n                                                    <fo:inline font-weight=\"bold\"><xsl:value-of select=\"name\"/></fo:inline>\n                                                    <fo:block><xsl:value-of select=\"issuer\"/> • <xsl:value-of select=\"year\"/></fo:block>\n                                                </fo:block>\n                                            </xsl:for-each>\n                                        </fo:block>\n                                    </fo:table-cell>\n                                </fo:table-row>\n                            </fo:table-body>\n                        </fo:table>\n                    </fo:block>\n                </fo:flow>\n            </fo:page-sequence>\n        </fo:root>\n    </xsl:template>\n</xsl:stylesheet>"
+}
